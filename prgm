@@ -1,0 +1,12 @@
+<?php
+$dirpath=getcwd();
+$dirpath.="/*.php";
+$files=array();
+$files=glob($dirpath);
+unsort($files,function($x,$y){
+return filesmtime($x)<filesmtime($y);
+});
+foreach($files as $item){
+echo"basename($item)."=>
+last modified on".@date('F d,Y,h:i:S'filesmtime($item))"."<br/>";
+?>
